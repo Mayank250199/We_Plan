@@ -80,44 +80,49 @@ function myFunction() {
 
 <script>
 $(function(){
-	$(".typed").typed({
-		strings: ["Events.", "Party.", "Happiness."],
-		// Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
-		stringsElement: null,
-		// typing speed
-		typeSpeed: 30,
-		// time before typing starts
-		startDelay: 1200,
-		// backspacing speed
-		backSpeed: 20,
-		// time before backspacing
-		backDelay: 500,
-		// loop
-		loop: true,
-		// false = infinite
-		loopCount: 5,
-		// show cursor
-		showCursor: false,
-		// character for cursor
-		cursorChar: "|",
-		// attribute to type (null == text)
-		attr: null,
-		// either html or text
-		contentType: 'html',
-		// call when done callback function
-		callback: function() {},
-		// starting callback function before each string
-		preStringTyped: function() {},
-		//callback for every typed string
-		onStringTyped: function() {},
-		// callback for reset
-		resetCallback: function() {}
-	});
+  $(".typed").typed({
+    strings: ["Events.", "Party.", "Happiness."],
+    // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
+    stringsElement: null,
+    // typing speed
+    typeSpeed: 30,
+    // time before typing starts
+    startDelay: 1200,
+    // backspacing speed
+    backSpeed: 20,
+    // time before backspacing
+    backDelay: 500,
+    // loop
+    loop: true,
+    // false = infinite
+    loopCount: 5,
+    // show cursor
+    showCursor: false,
+    // character for cursor
+    cursorChar: "|",
+    // attribute to type (null == text)
+    attr: null,
+    // either html or text
+    contentType: 'html',
+    // call when done callback function
+    callback: function() {},
+    // starting callback function before each string
+    preStringTyped: function() {},
+    //callback for every typed string
+    onStringTyped: function() {},
+    // callback for reset
+    resetCallback: function() {}
+  });
 });
 
 </script>
 <body id="home">
-
+{{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+{{#if success_msg}}
+    <div class="alert alert-danger">{{success_msg}}</div>
+{{/if}}
 <!-- Header -->
 <div class="w3-container w3-center" style="padding:128px 16px;font-color:white;" >
 
@@ -135,16 +140,17 @@ $(function(){
       <div>
         <div class="content-style-form content-style-form-2">
           <span class="icon icon-close">Close the dialog</span>
-          <h2>New User</h2>
-          <form>
-            <p><label>Name</label><input type="text" /></p>
-            <p><label>Email</label><input type="text" /></p>
-            <p><label>Password</label><input type="password" /></p>
-            <p><label>Phone No.</label><input type="number" /></p>
-            <p><button>Sign Up</button></p>
+          <form action="/signup" method="post">
+            <p><label>Name</label><input type="text" name="Username" required/></p>
+            <p><label>Email</label><input type="text" name="Email" required/></p>
+            <p><label>Password</label><input type="password" name="Password" required/></p>
+            <p><label>Phone No.</label><input type="number" name="PhoneNo" required/></p>
+            <input type="submit"></input>
           </form>
+          <br>
         </div>
       </div>
+      
     </div>
   </div>
 
@@ -156,12 +162,15 @@ $(function(){
     <div class="morph-content">
       <div>
         <div class="content-style-form content-style-form-1">
+          {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+          {{/if}}
           <span class="icon icon-close">Close the dialog</span>
           <h2>My Account</h2>
-          <form>
-            <p><label>Email</label><input type="text" /></p>
-            <p><label>Password</label><input type="password" /></p>
-            <p><button>Login</button></p>
+          <form action="/login" method="post">
+            <p><label>Phone No.</label><input type="number" name="PhoneNo" required/></p>
+            <p><label>Password</label><input type="password" name="Password" required/></p>
+            <input type="submit"></input>
           </form>
         </div>
       </div>
