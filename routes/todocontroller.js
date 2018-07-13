@@ -3,7 +3,6 @@ var express = require('express');
 var flash = require('connect-flash');
 var expressValidator = require('express-validator');
 
-mongoose.Promise = global.Promise;
 
 var web = express();
 
