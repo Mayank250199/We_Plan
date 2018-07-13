@@ -30,10 +30,11 @@ web.use(express.static((__dirname, 'public')));
  //flash
 web.use(flash());
 //Express Session
-web.use(session({
-  secret: 'secretsmmsmsmmm',
-  saveUninitialized : true,
-  resave : true
+
+web.use(require("express-session")({
+  secret: "Once again cutest dog!",
+  resave: false,
+  saveUninitialized: false
 }));
 
 
