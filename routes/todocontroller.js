@@ -12,7 +12,7 @@ var User = require('../models/user');
 var Item = require('../models/items');
 
 //Connect to the database
-mongoose.connect('mongodb://harshit:harshit1@ds235251.mlab.com:35251/weplan');
+mongoose.connect("mongodb://hpanwar:hpanwar1234@ds235251.mlab.com:35251/weplan", {useMongoClient: true});
 var db = mongoose.connection;
 
 // Input data in database
